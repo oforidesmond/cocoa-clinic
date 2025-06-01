@@ -66,35 +66,36 @@ const Home: React.FC = () => {
 };
 
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Reusing existing Header component */}
-      {/* <Header /> */}
-
+    <div className="flex flex-col">
       {/* Top Bar with Email and Social Media */}
-      <header className="w-full h-16 bg-blue-900 text-white">
-        <div className="container mx-auto flex justify-between items-center h-full px-6">
-          <div className="flex items-center gap-3">
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+      <header className="w-full bg-blue-900 text-white">
+        <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center h-full px-4 sm:px-6 py-4 sm:py-0 sm:h-16">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-0">
+            <svg className="w-4 h-4 sm:w-4 sm:h-4" fill="white" viewBox="0 0 24 24">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 2l-7 5-7-5h14zM4 18V8l8 5 8-5v10H4z" />
             </svg>
-            <span className="font-inter text-xl">cococlinic@cocobod.gh</span>
+            <span className="font-inter text-base sm:text-lg lg:text-xl">
+              cococlinic@cocobod.gh
+            </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="white" viewBox="0 0 24 24">
                 <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
               </svg>
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="white" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="white" viewBox="0 0 24 24">
                 <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
               </svg>
             </a>
@@ -103,20 +104,43 @@ const Home: React.FC = () => {
       </header>
 
       {/* Main Navigation */}
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <img
-              className="w-[67px] h-[66px] object-cover"
+              className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[67px] lg:h-[66px] object-cover"
               alt="Cocoa Clinic Logo"
               src={HeaderLogo}
             />
-            <div className="w-px h-[27px] bg-gray-400"></div>
-            <span className="font-inter text-2xl text-black">Cocoa Clinic</span>
+            <div className="w-px h-6 sm:h-[27px] bg-gray-400"></div>
+            <span className="font-inter text-xl sm:text-2xl text-black">Cocoa Clinic</span>
           </div>
-          <div className="flex items-center gap-8">
+
+          {/* Hamburger Menu Button (Mobile Only) */}
+          <button
+            className="sm:hidden flex items-center p-2"
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+          >
+            <svg
+              className="w-6 h-6 text-[#00416b]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d={isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
+              />
+            </svg>
+          </button>
+
+          {/* Navigation and Contact (Desktop/Tablet) */}
+          <div className={`hidden sm:flex items-center gap-4 lg:gap-8`}>
             <nav>
-              <ul className="flex gap-6 font-inter font-semibold text-[#00416b] text-lg">
+              <ul className="flex gap-4 lg:gap-6 font-inter font-semibold text-[#00416b] text-base lg:text-lg">
                 {navItems.map((item, index) => (
                   <li key={index}>
                     <ScrollLink
@@ -131,13 +155,44 @@ const Home: React.FC = () => {
                 ))}
               </ul>
             </nav>
-            <div className="flex items-center bg-[#00ACD8] text-white px-6 py-3 rounded-full">
+            <div className="flex items-center bg-[#00ACD8] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full">
               <svg className="w-4 h-4 mr-2" fill="white" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.74-.24 1.02l-2.2 2.2z" />
               </svg>
-              <span className="font-roboto-slab text-[21px]">0300 309 098 0</span>
+              <span className="font-roboto-slab text-base sm:text-lg lg:text-[21px]">
+                0300 309 098 0
+              </span>
             </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="sm:hidden absolute top-[140px] left-0 w-full bg-white shadow-md z-50">
+              <nav className="flex flex-col items-center py-4">
+                <ul className="flex flex-col gap-4 font-inter font-semibold text-[#00416b] text-base">
+                  {navItems.map((item, index) => (
+                    <li key={index}>
+                      <ScrollLink
+                        to={item.toLowerCase().replace(' ', '-')}
+                        smooth={true}
+                        duration={500}
+                        className="hover:text-blue-700 transition-colors cursor-pointer"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item}
+                      </ScrollLink>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-center bg-[#00ACD8] text-white px-4 py-2 rounded-full mt-4">
+                  <svg className="w-4 h-4 mr-2" fill="white" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.74-.24 1.02l-2.2 2.2z" />
+                  </svg>
+                  <span className="font-roboto-slab text-base">0300 309 098 0</span>
+                </div>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
 
