@@ -131,7 +131,7 @@ const Home: React.FC = () => {
                 ))}
               </ul>
             </nav>
-            <div className="flex items-center bg-blue-600 text-white px-6 py-3 rounded">
+            <div className="flex items-center bg-[#00ACD8] text-white px-6 py-3 rounded-full">
               <svg className="w-4 h-4 mr-2" fill="white" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.74-.24 1.02l-2.2 2.2z" />
               </svg>
@@ -141,37 +141,44 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Home Section */}
-      <section
-        id="home"
-        className="w-full h-[744px] bg-cover bg-center"
-        style={{ backgroundImage: `url(${HeroImage})` }}
-      >
-        <div className="container mx-auto px-6 h-full flex items-center">
-          <div className="max-w-2xl ml-auto text-white">
-            <h2 className="font-inter font-light text-[64px] leading-[64px]">
-              Get Quick
-            </h2>
-            <h1 className="font-inter font-bold text-[64px] leading-[64px] mt-2">
-              Medical Services
-            </h1>
-            <p className="font-inter text-lg leading-[29.2px] mt-8">
-              At Cocoa Clinic, we provide compassionate and comprehensive healthcare
-              services tailored to your needs. Our dedicated team of professionals
-              is committed to ensuring your well-being with state-of-the-art facilities
-              and personalized care.
-            </p>
-            <button className="mt-12 bg-blue-600 hover:bg-blue-700 text-white font-roboto-slab text-[21px] px-6 py-3 rounded transition-colors">
-              Contact Us
-            </button>
-          </div>
-        </div>
-      </section>
+     {/* Home Section */}
+<section
+  id="home"
+  className="w-full h-[744px] bg-cover bg-center relative"
+>
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: `linear-gradient(to right, transparent 50%, #0A436A 100%), url(${HeroImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  ></div>
+  <div className="container mx-auto px-6 h-full flex items-center relative z-10">
+    <div className="max-w-2xl ml-auto text-white">
+      <h2 className="font-inter font-light text-[64px] leading-[64px]">
+        Get Quick
+      </h2>
+      <h1 className="font-inter font-bold text-[64px] leading-[64px] mt-2">
+        Medical Services
+      </h1>
+      <p className="font-inter text-lg leading-[29.2px] mt-8">
+        At Cocoa Clinic, we provide compassionate and comprehensive healthcare
+        services tailored to your needs. Our dedicated team of professionals
+        is committed to ensuring your well-being with state-of-the-art facilities
+        and personalized care.
+      </p>
+      <button className="mt-12 bg-[#00ACD8] hover:bg-blue-300 text-white font-roboto-slab text-[21px] px-6 py-3 rounded-full transition-colors cursor-pointer">
+        Contact Us
+      </button>
+    </div>
+  </div>
+</section>
 
       {/* About Section */}
       <section
         id="about-us"
-        className="w-full min-h-screen bg-gray-100 flex items-center justify-center"
+        className="w-full min-h-screen bg-gray-200 flex items-center justify-center"
       >
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-inter font-bold text-[#00416b] text-[46px] mb-4">
@@ -183,7 +190,7 @@ const Home: React.FC = () => {
             facilities, we strive to provide personalized care that meets the unique
             needs of each patient, ensuring their health and well-being.
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-roboto-slab text-[21px] px-6 py-3 rounded transition-colors">
+          <button className="bg-[#00ACD8] hover:bg-blue-300 text-white font-roboto-slab text-[21px] px-14 py-3 rounded-full transition-colors cursor-pointer">
             More
           </button>
         </div>
@@ -226,7 +233,7 @@ const Home: React.FC = () => {
                     </p>
                   ))}
                 </div>
-                <button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-roboto-slab text-[21px] px-6 py-3 rounded transition-colors">
+                <button className="mt-8 bg-[#00ACD8] hover:bg-blue-300 text-white font-roboto-slab text-[21px] px-12 py-3 rounded-full transition-colors cursor-pointer">
                   More
                 </button>
               </div>
@@ -280,16 +287,19 @@ const Home: React.FC = () => {
           <div className="w-full min-h-[600px] relative py-8 overflow-hidden">
             {/* Spiral Vector Effect */}
             <div
-              className="absolute inset-0 bg-no-repeat bg-cover bg-center z-10 opacity-50"
+             className="absolute inset-0 bg-contain bg-center bg-repeat-x z-10 opacity-50"
               style={{
                 backgroundImage: `url(${Vector})`,
+                 width: '100vw',
+      left: '50%',
+      transform: 'translateX(-50%)',
               }}
             ></div>
 
             <div className="flex items-center justify-center relative z-20">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1200px] w-full px-4">
                 {/* Left Column: Image and Top Text */}
-                <div className="flex flex-col gap-6 text-black">
+                <div className="flex flex-col gap-6 text-blue-950">
                   <h3 className="font-inter font-bold text-[36px] md:text-[46px] leading-tight">
                     {service3.title}
                   </h3>
@@ -304,7 +314,7 @@ const Home: React.FC = () => {
                 </div>
 
                 {/* Right Column: Paragraphs */}
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 text-blue-950">
                   {service3.rightParagraphs.map((paragraph, index) => (
                     <p
                       key={index}
@@ -334,22 +344,22 @@ const Home: React.FC = () => {
                     {paragraph}
                   </p>
                 ))}
-                <button className="w-[214px] h-[51px] bg-blue-600 hover:bg-blue-700 text-white font-roboto-slab text-[21px] rounded transition-colors">
+                <button className="w-[214px] h-[51px] bg-[#00ACD8] hover:bg-blue-400 text-white font-roboto-slab text-[21px] rounded-full transition-colors cursor-pointer">
                   Contact Us
                 </button>
               </div>
 
               {/* Right Column: Image over Vector */}
-              <div className="relative w-full max-w-[524px] h-[756px]">
+              <div className="relative w-full max-w-[410px] h-[580px]">
                 <img
                   src={Vector2}
                   alt="Vector Background"
-                  className="absolute w-full max-w-[524px] h-[560px] bottom-0 left-0 object-cover z-10"
+                  className="absolute w-full max-w-[410px] h-[400px] bottom-0 left-0 object-cover z-10"
                 />
                 <img
                   src={Service5}
                   alt="Pharmacy Image"
-                  className="absolute w-full max-w-[495px] h-auto top-0 left-[15px] object-cover z-20"
+                  className="absolute w-full max-w-[380px] h-auto top-0 left-[15px] object-cover z-20"
                 />
               </div>
             </div>
@@ -404,7 +414,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Submit Button */}
-          <button className="mt-8 w-[296px] h-[51px] bg-blue-600 hover:bg-blue-700 text-white font-roboto-slab text-[21px] rounded transition-colors">
+          <button className="mt-8 w-[296px] h-[51px] bg-[#00ACD8] hover:bg-blue-300 text-white font-roboto-slab text-[21px] rounded-full cursor-pointer transition-colors">
             Submit
           </button>
         </div>
@@ -422,7 +432,7 @@ const Home: React.FC = () => {
   </div>
 
   {/* Footer */}
-  <footer className="w-full bg-[#AEAEAE] text-black pt-24 pb-18 -mt-20 relative z-10">
+  <footer className="w-full bg-[#AEAEAE] text-black pt-32 pb-18 -mt-20 relative z-10">
     <div
       className="absolute inset-x-0 bottom-0 h-[50px] text-amber-50 bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: `url(${Vector3})` }}
@@ -473,33 +483,39 @@ const Home: React.FC = () => {
         <div className="flex flex-col gap-4">
           <h3 className="font-inter font-bold text-lg">Contact Us</h3>
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="#00ACD8" viewBox="0 0 24 24">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 2l-7 5-7-5h14zM4 18V8l8 5 8-5v10H4z" />
             </svg>
             <span className="font-inter text-lg">cococlinic@cocobod.gh</span>
           </div>
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="#00ACD8" viewBox="0 0 24 24">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.74-.24 1.02l-2.2 2.2z" />
             </svg>
             <span className="font-inter text-lg">0300 309 098 0</span>
           </div>
           <div className="flex gap-4">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24">
-                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-              </svg>
-            </a>
+             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+    <div className="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center">
+      <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+      </svg>
+    </div>
+  </a>
+             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+    <div className="w-10 h-10 bg-[#1DA1F2] rounded-full flex items-center justify-center">
+      <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+        <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016.44 3c-2.63 0-4.57 2.37-3.99 4.99C8.36 7.91 5.7 6.31 3.98 4a4.48 4.48 0 00-.63 2.27c0 1.57.8 2.96 2.03 3.77A4.48 4.48 0 012 9.74v.05a4.5 4.5 0 003.6 4.4 4.52 4.52 0 01-2.02.08 4.5 4.5 0 004.2 3.13A9.03 9.03 0 012 19.54 12.77 12.77 0 008.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.35-.02-.53A8.32 8.32 0 0023 3z" />
+      </svg>
+    </div>
+  </a>
+             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+    <div className="w-10 h-10 bg-[#0077B5] rounded-full flex items-center justify-center">
+      <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24">
+        <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v12h-4V8zm7 0h3.6v1.5h.05c.5-.94 1.7-1.94 3.5-1.94 3.75 0 4.45 2.5 4.45 5.74V20h-4v-6.12c0-1.45-.03-3.3-2-3.3s-2.3 1.57-2.3 3.2V20h-4V8z" />
+      </svg>
+    </div>
+  </a>
           </div>
         </div>
       </div>
